@@ -1,0 +1,105 @@
+Pants	Shoes	"United States"	382.77
+Shoes	Tops	Canada	345.39
+Boots	Bottoms	"United States"	293.82
+Shoes	Shoes	"United States"	287.5
+Jacket	Accessories	"United States"	250.26
+Boots	Shoes	"United States"	242.82
+Shoes	Bottoms	Taiwan	239.17
+Jeans	Bottoms	"United States"	237.32
+Sweater	Bottoms	"United States"	224.18
+Jeans	Shoes	"United States"	222.48
+Sweater	Bottoms	"United States"	218.48
+Sweater	Accessories	China	210.96
+Jeans	Shoes	Mexico	209.19
+Sweater	Accessories	Germany	208.17
+Jeans	Shoes	Australia	206.5
+Shirt	Shoes	China	206.04
+Shorts	Accessories	"United States"	205.32
+Jacket	Bottoms	Japan	205.31
+Hoodie	Shoes	"United States"	203.93
+Sweater	Tops	France	203.86
+Sweater	Tops	"United States"	203.52
+Boots	Tops	Germany	203.33
+Shoes	Bottoms	China	202.68
+Jacket	Shoes	"United States"	200.43
+Hoodie	Accessories	Colombia	199.32
+Jeans	Bottoms	Russia	198.99
+Shorts	Bottoms	"United States"	198.97
+Shirt	Bottoms	"United States"	196.29
+Sweater	Bottoms	Chile	196.21
+Shirt	Bottoms	"United States"	195.57
+Shoes	Bottoms	"United States"	195.02
+Shoes	Bottoms	"United States"	194.71
+Pants	Accessories	"United States"	194.54
+Shirt	Shoes	"United States"	194.36
+Shirt	Shoes	Ghana	193.98
+Hoodie	Accessories	"United States"	193.03
+Shorts	Tops	Australia	192.48
+Jacket	Bottoms	"United States"	192.07
+Pants	Bottoms	Canada	191.24
+Shirt	Shoes	"United States"	191.06
+Coat	Accessories	"United States"	191.05
+Slippers	Shoes	Poland	190.96
+Shoes	Accessories	"United States"	190.96
+Sweater	Bottoms	"United States"	190.36
+Hoodie	Shoes	China	190.18
+Sweater	Accessories	Brazil	189.23
+Sweater	Bottoms	Japan	189.22
+Pants	Tops	"United States"	189.04
+Shoes	Tops	"South Africa"	188.83
+Shirt	Accessories	Canada	188.61
+Sweater	Tops	Colombia	188.33
+Jacket	Tops	Italy	188.22
+Jacket	Accessories	Canada	188.17
+Sweater	Shoes	"United States"	187.64
+Slippers	Bottoms	Japan	187.34
+Pants	Bottoms	Sweden	187.28
+Hoodie	Tops	Colombia	186.68
+Jacket	Tops	Turkey	186.31
+Hoodie	Shoes	China	186.09
+Shorts	Tops	Japan	185.41
+Shorts	Bottoms	"United States"	185.26
+Jeans	Tops	Nigeria	185.16
+Shirt	Accessories	"United States"	184.9
+Coat	Bottoms	"United States"	183.97
+Sweater	Accessories	Bulgaria	183.48
+Coat	Tops	Brazil	183.35
+Coat	Bottoms	"United States"	183.26
+Boots	Tops	"United States"	183.11
+Coat	Accessories	Switzerland	183.07
+Pants	Shoes	"United States"	182.85
+Boots	Accessories	Romania	182.57
+Shorts	Shoes	China	182.22
+Slippers	Bottoms	Italy	182.06
+Slippers	Accessories	"United Kingdom"	182.03
+Shorts	Accessories	Taiwan	182.02
+Shorts	Accessories	"United States"	182.01
+Sweater	Shoes	"United Kingdom"	181.92
+Sweater	Tops	"United Kingdom"	181.78
+Pants	Bottoms	China	181.42
+Shirt	Tops	"United States"	181.22
+Shorts	Tops	Japan	181.19
+Pants	Shoes	China	180.99
+Boots	Tops	Taiwan	180.89
+Hoodie	Tops	"Republic of Korea"	180.79
+Sweater	Tops	Brazil	180.04
+Shirt	Bottoms	France	180.03
+Sweater	Accessories	"United States"	179.62
+Shoes	Accessories	Romania	179.51
+Boots	Bottoms	"United States"	179.37
+Slippers	Tops	"United States"	178.86
+Shirt	Tops	"United States"	178.81
+Jeans	Tops	Italy	178.78
+Shoes	Tops	France	178.77
+Slippers	Accessories	"United States"	178.73
+Shoes	Bottoms	"United States"	178.51
+Shorts	Accessories	Colombia	178.33
+Pants	Tops	"Costa Rica"	177.85
+Shirt	Shoes	Slovakia	177.79
+Jacket	Tops	"United States"	177.78
+Slippers	Accessories	Chile	177.54
+Time taken: 5502.161 seconds, Fetched: 100 row(s)
+
+
+
+

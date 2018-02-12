@@ -1,0 +1,50 @@
+# Create taaable and load data
+
+CREATE EXTERNAL TABLE orders (date STRING, ip STRING, item STRING, category STRING, price FLOAT) PARTITIONED BY (ddd STRING) ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' with serdeproperties("separatorChar" = "\t", "quoteChar" = "\"") stored as textfile;
+
+LOAD DATA INPATH '/user/vkhomenko/events/17/08/06' OVERWRITE INTO TABLE orders partition (ddd='2017-08-06');
+LOAD DATA INPATH '/user/vkhomenko/events/17/08/07' OVERWRITE INTO TABLE orders partition (ddd='2017-08-07');
+LOAD DATA INPATH '/user/vkhomenko/events/17/08/08' OVERWRITE INTO TABLE orders partition (ddd='2017-08-08');
+LOAD DATA INPATH '/user/vkhomenko/events/17/08/09' OVERWRITE INTO TABLE orders partition (ddd='2017-08-09');
+LOAD DATA INPATH '/user/vkhomenko/events/17/08/10' OVERWRITE INTO TABLE orders partition (ddd='2017-08-10');
+LOAD DATA INPATH '/user/vkhomenko/events/17/08/11' OVERWRITE INTO TABLE orders partition (ddd='2017-08-11');
+
+
+# Select top 10  most frequently purchased categories
+select item,count(item) as count from orders group by item order by count desc limit 10;
+
+
+# Select top 10 most frequently purchased product in each category
+select * from (select item, category, cnt, rank() over ( partition by category order by cnt desc) as rank from (select item, category, count(item) as cnt from orders group by category,item) t ) r where rank<3 order by category;
+
+
+# Upload geodata
+CREATE EXTERNAL TABLE IF NOT EXISTS locations (
+geoname_id INT,locale_code STRING,continent_code STRING,continent_name STRING,country_iso_code STRING,country_name STRING)
+COMMENT 'Locations by country'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE;
+LOAD DATA INPATH '/user/vkhomenko/GeoLite2-Country-Locations-en.csv' OVERWRITE INTO TABLE locations;
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS blocks (
+network STRING,geoname_id INT,registered_country_geoname_id INT,represented_country_geoname_id INT,is_anonymous_proxy STRING,is_satellite_provider STRING)
+COMMENT 'IP blocks'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE;
+LOAD DATA INPATH '/user/vkhomenko/GeoLite2-Country-Blocks-IPv4.csv' OVERWRITE INTO TABLE blocks;
+
+
+# Using UDF to parse ip blocks
+hive> ADD JAR /tmp/hive-extensions-1.0-SNAPSHOT-jar-with-dependencies.jar;
+hive> create temporary function ipinblock as 'com.matthewrathbone.example.IpInBlock';
+
+
+# JOIN events data with ip geo data
+create table countries_top_spen as
+select item, category, country_name, sum(price) as spent from (select ord.item, ord.category, ord.price as price, ord.ip, blk.network, blk.geoname_id as geoname_id from blocks blk, orders ord where ipinblock(ord.ip, blk.network)="True")  sq join locations lc on lc.geoname_id = sq.geoname_id group by country_name, item, category, price  order by spent desc limit 100;
+
+# Save to hadoop file
+INSERT OVERWRITE DIRECTORY "/user/vkhomenko/result" ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE select * from countries_top_spen;

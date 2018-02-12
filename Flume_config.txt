@@ -1,0 +1,48 @@
+# Please paste flume.conf here. Example:
+
+# Sources, channels, and sinks are defined per
+# agent name, in this case 'tier1'.
+tier1.sources  = source1 netcatSource
+tier1.channels = channel1 memChannel
+tier1.sinks    = sink1 HDFSsink
+
+# For each source, channel, and sink, set
+# standard properties.
+tier1.sources.source1.type     = netcat
+tier1.sources.source1.bind     = 127.0.0.1
+tier1.sources.source1.port     = 9999
+tier1.sources.source1.channels = channel1
+tier1.channels.channel1.type   = memory
+tier1.sinks.sink1.type         = logger
+tier1.sinks.sink1.channel      = channel1
+
+# Other properties are specific to each type of
+# source, channel, or sink. In this case, we
+# specify the capacity of the memory channel.
+tier1.channels.channel1.capacity = 100
+
+
+#tier1.sources  = netcatSource
+#tier1.channels = memChannel
+#tier1.sinks    = HDFSsink
+
+tier1.sources.netcatSource.bind     = 0.0.0.0
+tier1.sources.netcatSource.type     = netcat
+tier1.sources.netcatSource.port     = 9997
+tier1.sources.netcatSource.channels = memChannel
+
+tier1.channels.memChannel.type   = memory
+tier1.channels.memChannel.capacity = 100
+
+tier1.sources.netcatSource.interceptors = i1
+tier1.sources.netcatSource.interceptors.i1.type = regex_extractor
+tier1.sources.netcatSource.interceptors.i1.regex = \\"(.*?)\\"
+tier1.sources.netcatSource.interceptors.i1.serializers = s1
+tier1.sources.netcatSource.interceptors.i1.serializers.s1.type = org.apache.flume.interceptor.RegexExtractorInterceptorMillisSerializer
+tier1.sources.netcatSource.interceptors.i1.serializers.s1.name = timestamp
+tier1.sources.netcatSource.interceptors.i1.serializers.s1.pattern = yyyy-MM-dd HH:mm
+
+tier1.sinks.HDFSsink.type         =  hdfs
+tier1.sinks.HDFSsink.channel      = memChannel
+tier1.sinks.HDFSsink.hdfs.path = hdfs://ip-10-0-0-207.us-west-1.compute.internal:8020/user/vkhomenko/events/%y/%m/%d
+#tier1.sinks.HDFSsink.hdfs.useLocalTimeStamp = true

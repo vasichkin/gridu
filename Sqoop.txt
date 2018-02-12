@@ -1,0 +1,8 @@
+# Import Hive results
+mysql create database vkhomenko;
+use vkhomenko;
+mysql> create table IF NOT EXISTS countries_top_spent (item VARCHAR(35), category VARCHAR(35), country VARCHAR(35), spent FLOAT);
+
+
+sqoop export --connect jdbc:mysql://10.0.0.21/vkhomenko --table countries_top_spent --export-dir '/user/vkhomenko/result' --verbose --fields-terminated-by ,
+
