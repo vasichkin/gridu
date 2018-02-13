@@ -38,8 +38,9 @@ LOAD DATA INPATH '/user/vkhomenko/GeoLite2-Country-Blocks-IPv4.csv' OVERWRITE IN
 
 
 # Using UDF to parse ip blocks
+# Build and upload jar from src/java/com/gridu/
 hive> ADD JAR /tmp/hive-extensions-1.0-SNAPSHOT-jar-with-dependencies.jar;
-hive> create temporary function ipinblock as 'com.matthewrathbone.example.IpInBlock';
+hive> create temporary function ipinblock as 'com.gridu.IpInBlock';
 
 
 # JOIN events data with ip geo data
